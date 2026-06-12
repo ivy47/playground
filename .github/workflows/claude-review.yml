@@ -18,6 +18,9 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           direct_prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+            
             Please review this pull request thoroughly:
             - Check for bugs, logic errors, and edge cases
             - Identify security vulnerabilities
@@ -26,3 +29,8 @@ jobs:
             - Also check the .md files changes
             - Check the difference between an old and new files
             Be concise and actionable in your feedback.
+            
+            Post detailed playwright findings as PR comments.
+
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*)"
