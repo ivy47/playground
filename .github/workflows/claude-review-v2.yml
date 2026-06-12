@@ -91,9 +91,8 @@ jobs:
             
             Use the repository's CLAUDE.md for guidance on style and conventions. Be constructive and helpful in your feedback.
 
-            Use `gh pr comment` with your Bash tool to leave your review as a comment on the PR.
-            
-            Leave comments on specific code lines so it will be easier to see comments in github file changed tab
+            For each specific issue found, use the `mcp__github_inline_comment__create_inline_comment` tool to leave an inline comment on the exact line of code. This makes feedback visible directly in the "Files changed" tab in GitHub.
+            Use `gh pr comment` only for a brief overall summary at the end.
 
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://docs.anthropic.com/en/docs/claude-code/sdk#command-line for available options
