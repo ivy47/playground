@@ -1,0 +1,35 @@
+name: Claude PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Claude PR Review
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          direct_prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+            
+            Please review this pull request thoroughly:
+            - Check for bugs, logic errors, and edge cases
+            - Identify security vulnerabilities
+            - Assess code quality and readability
+            - Suggest improvements where relevant
+            - Also check the .md files changes
+            - Check the difference between an old and new files
+            
+            Post detailed findings as PR comments.
+            Be concise and actionable in your feedback.
+
+          allowed_tools: "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*)"
