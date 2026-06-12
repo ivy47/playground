@@ -23,4 +23,6 @@ jobs:
             - Identify security vulnerabilities
             - Assess code quality and readability
             - Suggest improvements where relevant
+            - Also check the .md files changes
+            - Check the difference between an old and new files
             Be concise and actionable in your feedback.
