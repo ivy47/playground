@@ -5,5 +5,4 @@ const even = (element) => element % 2 === 0;
 
 console.log(array.some(even));
 
-cnsole1.log(even)
 // Expected output: true
