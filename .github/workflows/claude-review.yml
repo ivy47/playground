@@ -28,10 +28,14 @@ jobs:
           # Enable progress tracking
           track_progress: true
 
+          include_fix_links: false
+
           # Your custom review instructions
           prompt: |
             REPO: ${{ github.repository }}
             PR NUMBER: ${{ github.event.pull_request.number }}
+
+            **Before starting your review:** Check if a `CLAUDE.md` file exists in the repository root. If it does, read it and follow any project-specific guidelines, conventions, and instructions it contains — they take priority over the general checklist below.
 
             Perform a comprehensive code review with the following focus areas:
 
@@ -65,7 +69,7 @@ jobs:
 
           # Tools for comprehensive PR review
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read"
 
 # When track_progress is enabled:
 # - Creates a tracking comment with progress checkboxes
