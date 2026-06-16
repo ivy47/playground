@@ -1,11 +1,11 @@
-name: PR Review with Progress Tracking
+name: Claude PR Review
 
 # This example demonstrates how to use the track_progress feature to get
 # visual progress tracking for PR reviews, similar to v0.x agent mode.
 
 on:
   pull_request:
-    types: [opened, synchronize, ready_for_review, reopened]
+    types: [ opened, synchronize, ready_for_review, reopened ]
 
 jobs:
   review-with-tracking:
@@ -14,6 +14,7 @@ jobs:
       contents: read
       pull-requests: write
       id-token: write
+      actions: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -61,8 +62,6 @@ jobs:
 
             5. **Documentation**
                - Ensure code is properly documented
-               - Verify README updates for new features
-               - Check API documentation accuracy
 
             Provide detailed feedback using inline comments for specific issues.
             Use top-level comments for general observations or praise.
